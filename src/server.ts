@@ -3,6 +3,7 @@ import { config } from './config/env';
 import { logger } from './utils/logger';
 import healthRoutes from './routes/health.routes';
 import insightsRoutes from './routes/insights.routes';
+import chatRoutes from './routes/chat.routes';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json({ limit: '1mb' }));
 
 app.use('/ai', healthRoutes);
 app.use('/ai', insightsRoutes);
+app.use('/ai', chatRoutes);
 
 app.use(errorHandler);
 

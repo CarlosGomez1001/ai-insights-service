@@ -1,4 +1,4 @@
-import type { LLMProvider, CustomerInsightGenerationResult } from './LLMProvider';
+import type { LLMProvider, CustomerInsightGenerationResult, CustomerChatGenerationResult } from './LLMProvider';
 
 /**
  * Provider simulado (MOCK_OPENAI=true) — devuelve un insight fijo con la
@@ -22,6 +22,13 @@ export class MockProvider implements LLMProvider {
                     { prioridad: 1, accion: '[MOCK] Contactar al cliente para revisar su situación de pago.', motivo: '[MOCK] Basado en la alerta simulada.' },
                 ],
             },
+        };
+    }
+
+    async generateChatResponse(): Promise<CustomerChatGenerationResult> {
+        return {
+            model: 'mock-provider',
+            respuesta: '[MOCK] Esta es una respuesta simulada del chat, generada sin llamar a OpenAI.',
         };
     }
 }
